@@ -1,0 +1,22 @@
+<%- include('includes/header') %>
+
+  <div class="container py-md-5 container--narrow">
+    <%- include('includes/flash') %>
+    <%- include('includes/profileShared') %>
+    <div class="list-group">
+      <% if (posts.length) {
+        posts.forEach((post) => { %>
+          <a href="/post/<%= post._id %>" class="list-group-item list-group-item-action">
+            <img class="avatar-tiny" src="<%= post.author.avatar %>">
+            <strong><%= post.title %></strong> on <%= post.createdDate.getMonth() + 1 %>/<%= post.createdDate.getDate() %>/<%= post.createdDate.getFullYear() %>
+          </a>
+        <% })
+      } else { %>
+        <div class="alert alert-warning text-center">
+            <p class="mb-0">😢 There are no posts! 😢</p>
+        </div>
+      <% } %>
+    </div>
+  </div>
+
+<%- include('includes/footer') %>
